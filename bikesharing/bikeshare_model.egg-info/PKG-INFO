@@ -1,0 +1,152 @@
+Metadata-Version: 2.2
+Name: bikeshare_model
+Version: 0.1.0
+Summary: Bike sharing prediction model.
+Home-page: https://github.com/yourusername/bikeshare-model
+Author: Arun
+Author-email: arunv.inc@gmail.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.9.0
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: seaborn
+Requires-Dist: matplotlib
+Requires-Dist: pyyaml
+Requires-Dist: python-dateutil
+Requires-Dist: joblib
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Bikeshare Model
+
+A machine learning model for predicting bike rental demand.
+
+## Project Structure
+
+'''
+Application/
+â”œâ”€â”€ bikeshare_model/
+â”‚   â”œâ”€â”€ config.yml
+â”‚   â”œâ”€â”€ pipeline.py
+â”‚   â”œâ”€â”€ predict.py
+â”‚   â”œâ”€â”€ train_pipeline.py
+â”‚   â”œâ”€â”€ VERSION
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ config/
+â”‚   â”‚   â”œâ”€â”€ core.py
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ datasets/
+â”‚   â”‚   â”œâ”€â”€ bike-rental-dataset.csv
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ processing/
+â”‚   â”‚   â”œâ”€â”€ data_manager.py
+â”‚   â”‚   â”œâ”€â”€ features.py
+â”‚   â”‚   â”œâ”€â”€ validation.py
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ trained_models/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”œâ”€â”€ tests/
+â”‚   â”œâ”€â”€ conftest.py
+â”‚   â”œâ”€â”€ test_features.py
+â”‚   â”œâ”€â”€ test_predictions.py
+â”œâ”€â”€ MANIFEST.in
+â”œâ”€â”€ mypy.ini
+â”œâ”€â”€ pyproject.toml
+â”œâ”€â”€ README.md
+â”œâ”€â”€ requirements.txt
+â”œâ”€â”€ setup.py
+â”œâ”€â”€ test_requirements.txt
+'''
+
+## Installation
+
+To install the package:
+
+'''bash
+pip install -e .
+'''
+
+## Running Tests
+
+To run tests:
+
+'''bash
+pytest
+'''
+
+To run tests with coverage:
+
+'''bash
+pytest --cov=bikeshare_model
+'''
+
+## Building the Package
+
+To build the package:
+
+'''bash
+pip install build
+python -m build
+'''
+
+## Usage
+
+After installing the package, you can use it to train a model:
+
+'''python
+from bikeshare_model.train_pipeline import run_training
+
+run_training()
+'''
+
+And make predictions:
+
+'''python
+import pandas as pd
+from bikeshare_model.predict import make_prediction
+
+# Prepare input data
+input_data = pd.DataFrame([{
+    'season': 1,  # Spring
+    'yr': 1,      # 2012
+    'mnth': 5,    # May
+    'holiday': 0, # No
+    'weekday': 'Mon',
+    'workingday': 1, # Yes
+    'weathersit': 1, # Clear
+    'temp': 0.35,   # Normalized temperature
+    'atemp': 0.38,  # Normalized feeling temperature
+    'hum': 0.45,    # Normalized humidity
+    'windspeed': 0.2, # Normalized wind speed
+    'hr': 12       # Hour of the day
+}])
+
+# Make prediction
+result = make_prediction(input_data)
+print(result)
+'''
+
+## License
+
+MIT
+
+## Author
+
+#Arun Vasudeva Rao <arunv.inc@gmail.com>

@@ -1,0 +1,13 @@
+include *.txt
+include *.md
+include *.yml
+include LICENSE
+include bikeshare_model/VERSION
+include requirements.txt
+include test_requirements.txt
+
+recursive-include bikeshare_model/datasets/ *
+recursive-include bikeshare_model/trained_models/ *.pkl
+
+prune */__pycache__
+global-exclude *.py[cod] __pycache__ *.so *.dylib

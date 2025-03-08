@@ -1,0 +1,41 @@
+# Bikeshare Model Configuration
+
+# Data parameters
+data:
+  dataset_path: datasets/bike-rental-dataset.csv
+  test_size: 0.2
+  random_state: 42
+
+# Feature parameters
+features:
+  numerical_features:
+    - temp
+    - atemp
+    - hum
+    - windspeed
+  categorical_features:
+    - yr
+    - mnth
+    - season
+    - weathersit
+    - holiday
+    - workingday
+    - hr
+  weekday_col:
+    - weekday
+  target_col: cnt
+  unused_cols:
+    - dteday
+    - casual
+    - registered
+
+# Model parameters
+model:
+  type: RandomForestRegressor
+  params:
+    n_estimators: 100
+    random_state: 42
+
+# Pipeline parameters
+pipeline:
+  outlier_factor: 1.5
